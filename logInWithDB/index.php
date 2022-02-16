@@ -34,13 +34,13 @@ if (isset($_POST['login'])) {
     $table = 'account';
     $port = '3306'; // default port for MySQL, can be omitted
     $connection = mysqli_connect($domain, $user, $password, $database, $port);
-    $query = 'SELECT username, password FROM `'.$table.'`;';
+    $query = 'SELECT username, password FROM '.$table;
     if (isset($id))
 	    if ($result = mysqli_query($connection, $query))
 		    while ($row = mysqli_fetch_row($result))
 			    if ($_POST['user'] == $row[0]) {
     				$_SESSION['user'] = $_POST['user'];
-    				if (sha1($_POST['pass']) == $row[1]) $_SESSION['hasPermition'] = true;
+    				if (sha1($_POST['pass']) == $row[1]) $_SESSION['hasPermition'] = true;  // assuming the passwords on the DB are hashed by sha1
                     else $_SESSION['hasPermition'] = false;
                     break;
 			    }
