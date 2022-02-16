@@ -32,7 +32,7 @@ if (isset($_POST['login'])) {
     $password = '';
     $database = 'accounts';
     $table = 'account';
-    $port = '3306'; // default port for MySQL, can be ommited
+    $port = '3306'; // default port for MySQL, can be omitted
     $connection = mysqli_connect($domain, $user, $password, $database, $port);
     $query = 'SELECT username, password FROM `'.$table.'`;';
     if (isset($id))
