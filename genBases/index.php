@@ -1,8 +1,8 @@
 <?php
 $baseAlphaChars = range('A', 'Z');
 
-$num = 543215;
-$pattern = array(26, 26, 16, 10, 8, 2); // AA00AA type of plate (example BB-40-GZ)
+$num = 45697599;
+$pattern = array(26, 26, 10, 10, 26, 26); // AA00AA type of plate (example BB-40-GZ)
 
 function genBaseSys($arr) {
     $newarr = array();
@@ -34,5 +34,14 @@ foreach($numGen as $i => $val) {
             if($pattern[$i] > 1 && $pattern[$i] <= 36) $strMatricula .= base_convert($val, 10, $pattern[$i]);
     }
 }
+
+function calcMax($typePlate) {
+    $r = 1;
+    for ($i = 0; $i < count($typePlate); $i++) 
+        $r *= $typePlate[$i];
+    return --$r;
+}
+
+echo calcMax($pattern)."\n";
 echo $strMatricula;
 ?>
